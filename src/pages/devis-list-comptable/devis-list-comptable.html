@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start left>
+      <logout-button></logout-button>
+    </ion-buttons>
+  
+    <ion-title>Gestion des devis</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <table *ngIf="allDevis.length > 0">
+    <thead>
+      <tr>
+        <th>Numéro</th>
+        <th>Nom</th>
+        <th>Client</th>
+        <th>Etat</th>
+        <th>Prix</th>
+        <th>Paiement</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let devis of allDevis">
+        <tr *ngIf="devis.etatDevis == 'Validé'">
+          <td>{{devis.idDevis}}</td>
+          <td>{{devis.nomDevis}}</td>
+          <td>{{devis.client.nomClient}} {{devis.client.prenomClient}}</td>
+          <td>{{devis.etatDevis}}</td>
+          <td>{{devis.prixDevis}} €</td>
+          <td>
+            <ion-range min="0" max="{{devis.prixDevis}}" pin="true" [(ngModel)]="devis.paiementDevis" color="primary">
+              <ion-label range-left>0</ion-label>
+              <ion-label range-right>{{devis.prixDevis}}</ion-label>
+            </ion-range>
+          </td>
+          <td>
+            <button ion-button type="button" [navPush]="DevisDetailComptablePage" [navParams]="{idDevis:devis.idDevis}">
+              <ion-icon name="brush"></ion-icon>
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <ion-card *ngIf="allDevis.length === 0">
+    <ion-card-content>
+      Aucun devis enregistré
+    </ion-card-content>
+  </ion-card>
+</ion-content>

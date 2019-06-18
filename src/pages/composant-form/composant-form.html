@@ -5,12 +5,14 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
+    <ion-buttons start left>
+      <logout-button></logout-button>
+    </ion-buttons>
     <ion-title>Ajout de composant</ion-title>
   </ion-navbar>
-
 </ion-header>
+
 <ion-content padding>
   <form (submit)="addComposant()">
     <ion-item>
@@ -23,7 +25,11 @@
       <ion-label stacked>
         Gamme du composant
       </ion-label>
-      <ion-input type="text" name="gammeComposant" [(ngModel)]="newComposant.gammeComposant"></ion-input>
+      <ion-select name="Gamme">
+        <ion-option *ngFor="let gamme of gammeType">
+          {{ gamme }}
+        </ion-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label stacked>

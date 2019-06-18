@@ -7,7 +7,10 @@
 <ion-header>
 
     <ion-navbar>
-      <ion-title>Ajout de composant</ion-title>
+        <ion-buttons start left>
+          <logout-button></logout-button>
+        </ion-buttons>
+        <ion-title>Ajout de composant</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -23,7 +26,11 @@
         <ion-label stacked>
           Gamme du composant
         </ion-label>
-        <ion-input type="text" name="gammeComposant" [(ngModel)]="composant.gammeComposant"></ion-input>
+        <ion-select name="Gamme">
+          <ion-option *ngFor="let gamme of gammeList" [selected]="gamme === composant.gammeComposant">
+            {{ gamme }}
+          </ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label stacked>

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 
@@ -13,6 +14,10 @@ import { DevisDetailPage } from "../pages/devis-detail/devis-detail";
 import { ComposantsListPage } from "../pages/composants-list/composants-list";
 import { ComposantFormPage } from "../pages/composant-form/composant-form";
 import { ComposantDetailPage } from "../pages/composant-detail/composant-detail";
+import { DevisListComptablePage } from "../pages/devis-list-comptable/devis-list-comptable";
+import { DevisDetailComptablePage} from "../pages/devis-detail-comptable/devis-detail-comptable";
+
+import { LogoutButton } from '../components/logout-button/logout-button';
 
 import { UserProvider } from '../providers/user/user';
 import { DevisProvider } from '../providers/devis/devis';
@@ -27,11 +32,17 @@ import { ComposantProvider } from '../providers/composant/composant';
     DevisDetailPage,
     ComposantsListPage,
     ComposantFormPage,
-    ComposantDetailPage
+    ComposantDetailPage,
+    DevisListComptablePage,
+    DevisDetailComptablePage,
+
+    LogoutButton
+
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +53,9 @@ import { ComposantProvider } from '../providers/composant/composant';
     DevisDetailPage,
     ComposantsListPage,
     ComposantFormPage,
-    ComposantDetailPage
+    ComposantDetailPage,
+    DevisListComptablePage,
+    DevisDetailComptablePage
   ],
   providers: [
     StatusBar,
